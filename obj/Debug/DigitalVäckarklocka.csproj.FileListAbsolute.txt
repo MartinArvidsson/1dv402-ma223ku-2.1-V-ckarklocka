@@ -1,1 +1,6 @@
 C:\Users\Martin\Desktop\SKOLSAKER\DigitalVäckarklocka\bin\Debug\DigitalVäckarklocka.exe.config
+C:\Users\Martin\Desktop\SKOLSAKER\DigitalVäckarklocka\bin\Debug\DigitalVäckarklocka.exe
+C:\Users\Martin\Desktop\SKOLSAKER\DigitalVäckarklocka\bin\Debug\DigitalVäckarklocka.pdb
+C:\Users\Martin\Desktop\SKOLSAKER\DigitalVäckarklocka\obj\Debug\DigitalVäckarklocka.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Desktop\SKOLSAKER\DigitalVäckarklocka\obj\Debug\DigitalVäckarklocka.exe
+C:\Users\Martin\Desktop\SKOLSAKER\DigitalVäckarklocka\obj\Debug\DigitalVäckarklocka.pdb
