@@ -120,10 +120,10 @@ namespace DigitalVäckarklocka
         public string ToString() //Skriver ut vad klockan är och vad alarmet är ställt till.
         {
             StringBuilder time = new StringBuilder(); // stringbuilder är en sträng som kan modifieras, lägga till text istället för att skicka tillbaka nya objekt kan man skicka
-            time.AppendFormat("{0,4}", _Hour);        // tillbaka samma objekt fast redigerat.
+            time.AppendFormat("{0,4}:", _Hour);        // tillbaka samma objekt fast redigerat.
             if(_Minute< 10)
             {
-                time.AppendFormat("{0,4}:", _Minute); //AppendFormat redigerar Stringbuider strängen som vi använder för att utnyttja D.R.Y
+                time.AppendFormat("{0,0}:", _Minute); //AppendFormat redigerar Stringbuider strängen som vi använder för att utnyttja D.R.Y
             }
             else
             {
