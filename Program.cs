@@ -35,7 +35,7 @@ namespace DigitalVäckarklocka
             WatchTestHeader("\n test_6\nTestar egenskaperna så att undantag kastas då tid och alarmtid Tilldelas felaktiga värden");
             try
                 {
-                    test_6.Hour = 24; //Kollar om värdet är 24 och fångar det isåfall, annars går den till nästa "try "
+                    test_6.Hour = 24; //Kollar om värdet är 24hr och fångar det isåfall, annars går den till nästa "try "
                 }
             catch (ArgumentException wrong)
                 {
@@ -43,7 +43,7 @@ namespace DigitalVäckarklocka
                 }
             try
                 {
-                    test_6.Minute = 60;
+                    test_6.Minute = 60; //Samma som ovan fast med 60 min.
                 }
             catch (ArgumentException wrong)
                 {
@@ -51,7 +51,7 @@ namespace DigitalVäckarklocka
                 }
             try
                 {
-                    test_6.AlarmclockHour = 25;
+                    test_6.AlarmclockHour = 25; //Samma som ovan fast med 25hr.
                 }
             catch (ArgumentException wrong)
                 {
@@ -59,7 +59,7 @@ namespace DigitalVäckarklocka
                 }
             try
                 {
-                    test_6.AlarmclockMinute = 60;
+                    test_6.AlarmclockMinute = 60; //Samma som ovan fast 60 min.
                 }
             catch (ArgumentException wrong)
                 {
@@ -68,7 +68,7 @@ namespace DigitalVäckarklocka
             WatchTestHeader("\n test_7\nTestar konstruktorer så att undantag kastas då tid och alarmtid ntilldelas felaktiga värden."); 
             try
                 {
-                    Alarmclock test_7 = new Alarmclock(24, 0);
+                    Alarmclock test_7 = new Alarmclock(24, 0); //Sätter värdet till 24, får felmeddelande som fångas i catch och går sedan till nästa try.
                 }
             catch (ArgumentException wrong)
                 {
@@ -101,6 +101,12 @@ namespace DigitalVäckarklocka
         }
         private static void run(Alarmclock test, int minutes) //räknar minuter tills den når "alarm-värdet" skriver sedan ut koden på rad 106-112.
         {
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("=====================================");
+            Console.WriteLine("||    Väckarklockan URLED <TM>     ||");
+            Console.WriteLine("||     Modellnr.: 1DU402S2L2A      ||");
+            Console.WriteLine("=====================================");
+            Console.ResetColor();
             for (int i = 0; i < minutes; i++)
             {
                 if(test.TickTock())

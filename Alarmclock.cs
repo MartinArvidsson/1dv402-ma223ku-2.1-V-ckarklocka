@@ -8,17 +8,17 @@ namespace DigitalVäckarklocka
 {
     class Alarmclock
     {
-        private int _AlarmclockHour;  //Sätter variablar
-        private int _AlarmclockMinute;
-        private int _Hour;
-        private int _Minute;
+        private int _alarmclockHour;  //Sätter variablar som kan vara nummer (int)
+        private int _alarmclockMinute;
+        private int _hour;
+        private int _minute;
 
 
         public int AlarmclockHour  // Anger talet för variablen AlarmclockHour värdet ska motsvara Alarmets timmar. "get" läser in värdet "set" Sätter ett värde.
         {                          // när jag skickar värden används altså set och när jag vill ha ett värde anges get.
             get
             {
-                return _AlarmclockHour;
+                return _alarmclockHour;
             }
             set
             {
@@ -26,14 +26,14 @@ namespace DigitalVäckarklocka
                 {
                     throw new ArgumentException("ange korrekt timme mellan kl 0-23");
                 }
-                _AlarmclockHour = value;
+                _alarmclockHour = value;
             }
         }
         public int AlarmclockMinute //Anger talet för AlarmclockMinute, Värdet blir Alarmets minuter.
         {
             get
             {
-                return _AlarmclockMinute;
+                return _alarmclockMinute;
             }
             set
             {
@@ -41,14 +41,14 @@ namespace DigitalVäckarklocka
                 {
                     throw new ArgumentException("Ange korrekt minuttal inom 0 - 59");
                 }
-                _AlarmclockMinute = value;
+                _alarmclockMinute = value;
             }
         }
         public int Hour // Anger talet för Hour, Hour motsvarar KLOCKANS timmar
         {
             get
             {
-                return _Hour;
+                return _hour;
             }
             set
             {
@@ -56,14 +56,14 @@ namespace DigitalVäckarklocka
                 {
                     throw new ArgumentException("Klockans timmar måste vara mellan 0 - 23");
                 }
-                _Hour = value;
+                _hour = value;
             }
         }
         public int Minute // Anger talet för Minute, Minute motsvarar KLOCKANS minuter.
         {
             get
             {
-                return _Minute;
+                return _minute;
             }
             set
             {
@@ -71,7 +71,7 @@ namespace DigitalVäckarklocka
                 {
                     throw new ArgumentException("Klockans minuttal måste vara inom 0 - 59");
                 }
-                _Minute = value;
+                _minute = value;
             }
         }
         // här så ser konstruktorerna till så att objekten initieras på ett korrekt sätt.
@@ -94,51 +94,59 @@ namespace DigitalVäckarklocka
             AlarmclockHour = alarmclockHour;
             AlarmclockMinute = alarmclockMinute;
         }
-        public bool TickTock() //när TickTock anropas ökar minuten med +1 om antal minuter blir större än 59 sätts det till 0 och ökar hour med +1 om hour är större än 23 sätts hour till 0.
-        {                      // Efter det testas det om klockans timme + minut stämmer mot alarmets timme + minut.
-           _Minute++;
+        public bool TickTock() //när TickTock anropas ökar minuten med +1 om antal minuter blir större än 59 sätts det till 0 och ökar hour med +1 om hour är större än 23
+        {                      // sätts Hour till 0. Efter det testas det om klockans timme + minut stämmer mot alarmets timme + minut.
 
-           if (_Minute > 59)
-           {
-               _Hour++; _Minute = 0; 
-           }
+            if (Minute < 59)
+            {
+                Minute++;
+            }
+            else
+            {
+                Minute = 0;
 
-           if (_Hour > 23)
-           {
-               Hour = 0;
-           }
+                if (Hour < 23)
+                {
+                    Hour++;
+                }
+                else
+                {
+                    Hour = 0;
+                }
+            }
+            if (Hour == AlarmclockHour && AlarmclockMinute == Minute)
+            {
+                return true;
+            }
 
-           if (_Hour == _AlarmclockHour && _Minute == _AlarmclockMinute)
-           {
-               return true;
-           }
-
-           else
-           return false;
-
+            return false;
         }
-        public string ToString() //Skriver ut vad klockan är och vad alarmet är ställt till.
+
+            
+        public override string ToString() //Skriver ut vad klockan är och vad alarmet är ställt till.
         {
             StringBuilder time = new StringBuilder(); // stringbuilder är en sträng som kan modifieras, lägga till text istället för att skicka tillbaka nya objekt kan man skicka
-            time.AppendFormat("{0,4}:", _Hour);        // tillbaka samma objekt fast redigerat.
-            if(_Minute< 10)
+            time.AppendFormat("{0,4}:", _hour);        // tillbaka samma objekt fast redigerat.
+            if(_minute< 10)
             {
-                time.AppendFormat("{0,0}:", _Minute); //AppendFormat redigerar Stringbuider strängen som vi använder för att utnyttja D.R.Y
+                time.AppendFormat("0{0}:", _minute); //AppendFormat redigerar Stringbuider strängen som vi använder för att utnyttja D.R.Y
             }
             else
             {
-                time.AppendFormat("{0}", _Minute);
+                time.AppendFormat("{0}", _minute); 
             }
-                time.AppendFormat("<{0}:", _AlarmclockHour);
-                if(_AlarmclockMinute<10)
+
+            time.AppendFormat("<{0}:", _alarmclockHour);
+            
+            if(_alarmclockMinute<10)
             { 
-                time.AppendFormat("0{0}>", _AlarmclockMinute);
+                time.AppendFormat("0{0}>", _alarmclockMinute);
             }
             else
             {
-                time.AppendFormat("{0}>", _AlarmclockMinute);
+                time.AppendFormat("{0}>", _alarmclockMinute);
             }                                
-               return time.ToString();         //Skickar tillbaka det nya värdet som stringbuilder har fått genom ovanstående kod.               
+            return time.ToString();         //Skickar tillbaka det nya värdet som stringbuilder har fått genom ovanstående kod.               
         
          }
    }
